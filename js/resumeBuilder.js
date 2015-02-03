@@ -67,55 +67,40 @@ var education = {
 };
 
 var work = {
-  "HDB": {
+  "HDB1": {
     "organization": "Housing and Development Board of Singapore",
-    "role": [
-      {
-        "title": "Housing and Development Board Overseas Scholarship",
-        "dates": "August 2006 - May 2010",
-        "location": "Singapore",
-        "description": "Received a full scholarship worth SGD400,000"
-      },
-      {
-        "title": "Senior Estate Manager",
-        "details": [
-          {
-            "area": "Policy Development",
-            "dates": "July 2010 - Present",
-            "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term."
-          },
-          {
-            "area": "Policy Analytics",
-            "dates": "July 2010 - Present",
-            "location": "Singapore",
-            "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term."
-          }
-        ]
-      }
-    ]
+    "title": "Senior Estate Manager (Policy Development)",
+    "dates": "April 2012 - Present",
+    "location": "Singapore",
+    "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term."
   },
-  "pennclub": {
+  "HDB2": {
+    "organization": "Housing and Development Board of Singapore",
+    "title": "Estate Officer (Policy Development)",
+    "dates": "July 2010 - April 2012",
+    "location": "Singapore",
+    "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term."
+  },
+  "pennclub1": {
     "organization": "Penn and Wharton Alumni Club of Singapore",
-    "details": [
-      {
-        "title": "Treasurer",
-        "dates": "FY2013/14",
-        "location": "Singapore",
-        "description": "Maintains and reports accounts and authorizes expenses."
-      },
-      {
-        "title": "Co-chair of Penn Alumni Interview Program",
-        "dates": "FY2013/14",
-        "location": "Singapore",
-        "description": "Maintains and reports accounts and authorizes expenses."
-      },
-      {
-        "title": "Executive Committee Member",
-        "dates": "FY2013/14",
-        "location": "Singapore",
-        "description": "Maintains and reports accounts and authorizes expenses."
-      }
-    ]
+    "title": "Treasurer",
+    "dates": "May 2013 - May 2014",
+    "location": "Singapore",
+    "description": "Maintained and reports accounts and authorizes expenses."
+  },
+  "pennclub2": {
+    "organization": "Penn and Wharton Alumni Club of Singapore",
+    "title": "Executive Committee Member",
+    "dates": "May 2012 - Present",
+    "location": "Singapore",
+    "description": "Maintains and reports accounts and authorizes expenses."
+  },
+  "pennclub3": {
+    "organization": "Penn Alumni Interview Program (Singapore)",
+    "title": "Co-Chair",
+    "dates": "July 2013 - Present",
+    "location": "Singapore",
+    "description": "Developed and maintained web application to help organize interviews."
   }
 };
 
@@ -146,17 +131,35 @@ var projects = {
   }
 };
 
+$("#header").append(HTMLheaderName.replace("%data%", bio["name"]));
+$("#header").append(HTMLheaderRole.replace("%data%", bio["role"]));
+
+if (bio["contacts"]) {
+  var newContact = "";
+  console.log("hello");
+  for (var contact in bio["contacts"]) {
+    newContact = HTMLcontactGeneric.replace("%contact%", contact);
+    newContact = newContact.replace("%data%", bio["contacts"][contact]);
+    console.log(newContact);
+    $("#topContacts").append(newContact);
+  }
+}
+
+$("#header").append(HTMLbioPic.replace("%data%", bio["bioPic"]));
+$("#header").append(HTMLWelcomeMsg.replace("%data%", bio["welcomeMessage"]));
+
 if (bio["skills"].length > 0) {
   $("#header").append(HTMLskillsStart);
   for (i = 0; i < bio["skills"].length; i++) {
-    console.log(i);
     $("#skills").append(HTMLskills.replace("%data%", bio["skills"][i]));
   }
 }
 
 for (job in work) {
   $("#workExperience").append(HTMLworkStart);
-  $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work[job]["organization"]));
-  $(".work-entry:last").append("</a>");
+  $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work[job]["organization"]) + HTMLworkTitle.replace("%data%", work[job]["title"]));
+  $(".work-entry:last").append(HTMLworkDates.replace("%data%", work[job]["dates"]));
+  $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work[job]["location"]));
+  $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work[job]["description"]));
 }
 
