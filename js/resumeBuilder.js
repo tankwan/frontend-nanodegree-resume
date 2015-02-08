@@ -108,26 +108,21 @@ var projects = {
   "interviewsystem": {
     "title": "Penn Alumni Interview Program (Singapore) Web Application",
     "dates": "Sep 2013 - Feb 2015",
+    "role": "App Creator",
     "description": "Web application built using Ruby Sinatra web framework to organize interviews",
-    "image": "images/paip.jpg",
+    "image": "images/paip.png",
+    "location": "Singapore",
     "URL": "http://penninterviewsg.herokuapp.com/demo"
   },
   "rudepackets": {
     "title": "rudepackets Project",
+    "dates": "November 2014 - Ongoing",
     "description": "A series of cheeky red packets to revolutionize wedding gifting in Singapore",
     "role": "Co-founder, Moneybags",
-    "details": [
-      {
-        "description": "Successful Crowdfunding Campaign to Raise SGD 1,000",
-        "dates": "November - December 2014",
-        "URL": "http://pozible.com/rudepackets"
-      },
-      {
-        "description": "Development of Official Website",
-        "dates": "December 2014 - Ongoing",
-        "URL": "http://rudepackets.com"
-      }
-    ]
+    "image": "images/rudepackets.jpg",
+    "location": "Singapore",
+    "description": "Successful Crowdfunding Campaign to Raise SGD 1,000",
+    "url": "http://rudepackets.com"
   }
 };
 
@@ -155,11 +150,80 @@ if (bio["skills"].length > 0) {
   }
 }
 
-for (job in work) {
-  $("#workExperience").append(HTMLworkStart);
-  $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work[job]["organization"]) + HTMLworkTitle.replace("%data%", work[job]["title"]));
-  $(".work-entry:last").append(HTMLworkDates.replace("%data%", work[job]["dates"]));
-  $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work[job]["location"]));
-  $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work[job]["description"]));
+var displayWork = function() {
+  for (job in work) {
+    $("#workExperience").append(HTMLworkStart);
+    $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work[job]["organization"]) + HTMLworkTitle.replace("%data%", work[job]["title"]));
+    $(".work-entry:last").append(HTMLworkDates.replace("%data%", work[job]["dates"]));
+    $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work[job]["location"]));
+    $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work[job]["description"]));
+  }
 }
+
+var displayProjects = function() {
+  for (project in projects) {
+    // var HTMLprojectStart = '<div class="project-entry"></div>';
+    $("#projects").append(HTMLprojectStart);
+    // var HTMLprojectTitle = '<a href="#">%data%</a>';
+    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects[project]["title"]));
+    console.log(projects[project]["title"]);
+    $("a:last").attr("href", projects[project]["url"])
+    // var HTMLprojectDates = '<div class="date-text">%data%</div>';
+    $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects[project]["dates"]));
+    // var HTMLprojectDescription = '<p><br>%data%</p>';
+    $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects[project]["description"]));
+    //var HTMLprojectImage = '<img src="%data%">';
+    $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects[project]["image"]));
+    $(".project-entry img").on('load', function(){
+      if ($(this).width() > $(this).height()) {
+        var adjustment = 400/$(this).width();
+      } else {
+        var adjustment = 400/$(this).height();
+      }
+      var maxWidth = $(this).width() * adjustment;
+      var maxHeight = $(this).height() * adjustment;
+      $(this).css({"max-width": maxWidth });
+      $(this).css({"max-height": maxHeight });
+      $(this).width("95%"); // Units are assumed to be pixels
+      $(this).height("95%");
+      console.log($(this).width());
+      console.log($(this).src());
+    });
+    // $("img:last").css({max-height: maxWidth; });
+  }
+}
+
+displayWork();
+displayProjects();
+
+$(document).click(function(loc) {
+  logClicks(loc.clientX, loc.clientY);
+});
+
+var nameChange = function(oldName) {
+  var finalName = "";
+  var names = oldName.trim().split(" ");
+    for (var i = 0; i < (names.length - 1); i++) {
+      finalName = finalName + names[i] + " ";
+    }
+  var lastName = names[names.length -1];
+  lastName = lastName.toUpperCase();
+  finalName = finalName + lastName;
+
+  return finalName;
+}
+
+$(document).click(function(loc) {
+  console.log(loc.pageX, loc.pageY);
+});
+
+// console.log(nameChange(bio.name));
+
+// internationalise button
+// $("#main")
+//   .append("<input type='button' value='Internationalize Name'>")
+//   .click(function() {
+//     console.log(nameChange(bio.name));
+//     $("#name").replaceWith(HTMLheaderName.replace("%data%", nameChange(bio.name)));
+//   });
 
