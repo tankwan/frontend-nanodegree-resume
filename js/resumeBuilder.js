@@ -1,16 +1,15 @@
-var bio = {
-  "name": "Tony K. Tan",
-  "role": "Budding Developer and Aspiring PM",
-  "contacts": {
-    "mobile": "+(65) 96831445",
-    "email": "t@tonyktan.com",
-    "github": "tankwan",
-    "twitter": "@tonytankwan",
-    "location": "Singapore"
+var bio = { // bio contains:
+  "name": "Tony K. Tan", // name : string
+  "role": "Self-taught Developer and Aspiring Product Manager", // role : string
+  "contacts": { // contacts : an object with
+    "mobile": "+(65) 96831445", //       mobile: string
+    "email": "t@tonyktan.com", //       email: string
+    "github": "tankwan", //       github: string
+    "twitter": "@tonytankwan", //       twitter: string
+    "location": "Singapore" //       location: string
   },
-  "welcomeMessage": "Welcome to my resume! Feel free to get in touch.",
-  "bioPic": "images/tonyktan.jpeg",
-  "skills": [
+  "welcomeMessage": "Welcome to my resume! Feel free to get in touch.", // welcomeMessage: string
+  "skills": [ // skills: array of strings
     "Ruby",
     "Python",
     "Sinatra",
@@ -21,109 +20,102 @@ var bio = {
     "Tableau",
     "Octave",
     "R"
-  ]
+  ],
+  "bioPic": "images/tonyktan.jpeg", // biopic: url
+  "display": function() {} // display: function
 }
 
-var education = {
-  "schools": [
+var education = { // education contains:
+  "schools": [ // schools: array of objects with
     {
-      "name": "The Wharton School, University of Pennsylvania",
-      "degree": "Bachelor of Science in Economics",
-      "concentrations": [
+      "name": "The Wharton School, University of Pennsylvania", //      name: string
+      "location": "Philadelphia, PA, US", //      location: string
+      "degree": "Bachelor of Science in Economics", //      degree: string
+      "majors": [ //      majors: array of strings
         "Real Estate",
         "Entrepreneurship",
         "Finance"
       ],
-      "dates": "Class of 2010",
-      "location": "Philadelphia, PA, US"
+      "dates": 2010, //      dates: integer (graduation date)
+      "url": "https://www.wharton.upenn.edu" //      url: string
     }
   ],
-  "online": [
+  "onlineCourses": [ // onlineCourses: array with
+    "Startup Engineering, Analysis of Algorithms (Part 1), Machine Learning", //      title: string
+    "Coursera", //      school: string
+    2014, //      date: integer (date finished)
+    "https://www.coursera.com" //      url: string
+  ],
+  "display": function() {} // display: function
+};
+
+var work = { // work contains
+  "jobs": [ // jobs: array of objects with
     {
-      "title": "Startup Engineering",
-      "school": "Coursera",
-      "dates": "2012",
-      "url": "coursera.com/startup"
+      "employer": "Housing and Development Board of Singapore", //      employer: string
+      "title": "Senior Estate Manager (Policy Development)", //      title: string
+      "location": "Singapore", //      location: string
+      "dates": "April 2012 - Present", //      dates: string (works with a hyphen between them)
+      "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term."
     },
     {
-      "title": "Analysis of Algorithms Part 1",
-      "school": "Coursera",
-      "dates": "2014",
-      "url": "coursera.com/algo"
+      "employer": "Housing and Development Board of Singapore", //      employer: string
+      "title": "Estate Officer (Policy Development)", //      title: string
+      "location": "Singapore", //      location: string
+      "dates": "July 2010 - April 2012", //      dates: string (works with a hyphen between them)
+      "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term." //      description: string
     },
     {
-      "title": "Machine Learning",
-      "school": "Coursera",
-      "dates": "2014",
-      "url": "coursera.com/machine"
+      "employer": "Penn and Wharton Alumni Club of Singapore", //      employer: string
+      "title": "Treasurer", //      title: string
+      "location": "Singapore", //      location: string
+      "dates": "May 2013 - May 2014", //      dates: string (works with a hyphen between them)
+      "description": "Maintained and reports accounts and authorizes expenses." //      description: string
     },
     {
-      "title": "Front-end Nanodegree",
-      "school": "Udacity",
-      "dates": "January - June 2015",
-      "url": "udacity.com/frontend"
+      "employer": "Penn and Wharton Alumni Club of Singapore", //      employer: string
+      "title": "Executive Committee Member", //      title: string
+      "location": "Singapore", //      location: string
+      "dates": "May 2012 - Present", //      dates: string (works with a hyphen between them)
+      "description": "Maintains and reports accounts and authorizes expenses." //      description: string
+    },
+    {
+      "employer": "Penn Alumni Interview Program (Singapore)", //      employer: string
+      "title": "Co-Chair", //      title: string
+      "location": "Singapore", //      location: string
+      "dates": "July 2013 - Present", //      dates: string (works with a hyphen between them)
+      "description": "Developed and maintained web application to help organize interviews." //      description: string
     }
-  ]
+  ],
+  "display": function() {}// display: function
 };
 
-var work = {
-  "HDB1": {
-    "organization": "Housing and Development Board of Singapore",
-    "title": "Senior Estate Manager (Policy Development)",
-    "dates": "April 2012 - Present",
-    "location": "Singapore",
-    "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term."
-  },
-  "HDB2": {
-    "organization": "Housing and Development Board of Singapore",
-    "title": "Estate Officer (Policy Development)",
-    "dates": "July 2010 - April 2012",
-    "location": "Singapore",
-    "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term."
-  },
-  "pennclub1": {
-    "organization": "Penn and Wharton Alumni Club of Singapore",
-    "title": "Treasurer",
-    "dates": "May 2013 - May 2014",
-    "location": "Singapore",
-    "description": "Maintained and reports accounts and authorizes expenses."
-  },
-  "pennclub2": {
-    "organization": "Penn and Wharton Alumni Club of Singapore",
-    "title": "Executive Committee Member",
-    "dates": "May 2012 - Present",
-    "location": "Singapore",
-    "description": "Maintains and reports accounts and authorizes expenses."
-  },
-  "pennclub3": {
-    "organization": "Penn Alumni Interview Program (Singapore)",
-    "title": "Co-Chair",
-    "dates": "July 2013 - Present",
-    "location": "Singapore",
-    "description": "Developed and maintained web application to help organize interviews."
-  }
-};
+// display: function
 
-var projects = {
-  "interviewsystem": {
-    "title": "Penn Alumni Interview Program (Singapore) Web Application",
-    "dates": "Sep 2013 - Feb 2015",
-    "role": "App Creator",
-    "description": "Web application built using Ruby Sinatra web framework to organize interviews",
-    "image": "images/paip.png",
-    "location": "Singapore",
-    "URL": "http://penninterviewsg.herokuapp.com/demo"
-  },
-  "rudepackets": {
-    "title": "rudepackets Project",
-    "dates": "November 2014 - Ongoing",
-    "description": "A series of cheeky red packets to revolutionize wedding gifting in Singapore",
-    "role": "Co-founder, Moneybags",
-    "image": "images/rudepackets.jpg",
-    "location": "Singapore",
-    "description": "Successful Crowdfunding Campaign to Raise SGD 1,000",
-    "url": "http://rudepackets.com"
-  }
+var projects = { // projects contains:
+  "projects": [ // projects: array of objects with
+    {
+      "title": "Penn Alumni Interview Program (Singapore) Web Application", //       title: string
+      "dates": "Sep 2013 - Feb 2015", //       dates: string (works with a hyphen between them)
+      "description": "Web application built using Ruby Sinatra web framework to organize interviews", //       description: string
+      "images": [ //       images: array with string urls
+        "images/paip.png"
+      ]//,
+      // "location": "Singapore",
+      // "URL": "http://penninterviewsg.herokuapp.com/demo"
+    },
+    {
+      "title": "rudepackets Project", //       title: string
+      "dates": "November 2014 - Ongoing", //       dates: string (works with a hyphen between them)
+      "description": "A series of cheeky red packets to revolutionize wedding gifting in Singapore", //       description: string
+      "images": [ //       images: array with string urls
+        "images/rudepackets.jpg"
+      ] //,
+      // "location": "Singapore",
+      // "url": "http://rudepackets.com"
+    }
+  ],
+  "display": function() {}// display: function
 };
 
 $("#header").prepend(HTMLheaderRole.replace("%data%", bio["role"]));
@@ -152,74 +144,42 @@ if (bio["skills"].length > 0) {
 }
 
 var displayWork = function() {
-  for (job in work) {
+  for (i = 0; i < work["jobs"].length; i++) {
     $("#workExperience").append(HTMLworkStart);
-    $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work[job]["organization"]) + HTMLworkTitle.replace("%data%", work[job]["title"]));
-    $(".work-entry:last").append(HTMLworkDates.replace("%data%", work[job]["dates"]));
-    $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work[job]["location"]));
-    $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work[job]["description"]));
+    $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work["jobs"][i]["employer"]) + HTMLworkTitle.replace("%data%", work["jobs"][i]["title"]));
+    $(".work-entry:last").append(HTMLworkDates.replace("%data%", work["jobs"][i]["dates"]));
+    $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work["jobs"][i]["location"]));
+    $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work["jobs"][i]["description"]));
   }
 }
 
 var displayProjects = function() {
-  for (project in projects) {
-    // var HTMLprojectStart = '<div class="project-entry"></div>';
+  for (project in projects["projects"]) {
     $("#projects").append(HTMLprojectStart);
-    // var HTMLprojectTitle = '<a href="#">%data%</a>';
-    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects[project]["title"]));
-    console.log(projects[project]["title"]);
-    $("a:last").attr("href", projects[project]["url"])
-    // var HTMLprojectDates = '<div class="date-text">%data%</div>';
-    $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects[project]["dates"]));
-    // var HTMLprojectDescription = '<p><br>%data%</p>';
-    $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects[project]["description"]));
-    //var HTMLprojectImage = '<img src="%data%">';
-    $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects[project]["image"]));
-    $(".project-entry img").on('load', function(){
-      if ($(this).width() > $(this).height()) {
-        var adjustment = 400/$(this).width();
-      } else {
-        var adjustment = 400/$(this).height();
-      }
-      var maxWidth = $(this).width() * adjustment;
-      var maxHeight = $(this).height() * adjustment;
-      $(this).css({"max-width": maxWidth });
-      $(this).css({"max-height": maxHeight });
-      $(this).width("95%"); // Units are assumed to be pixels
-      $(this).height("95%");
-    });
-    // $("img:last").css({max-height: maxWidth; });
+    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects["projects"][project]["title"]));
+    $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects["projects"][project]["dates"]));
+    $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects["projects"][project]["description"]));
+    for (i = 0; i < projects["projects"][project]["images"].length; i++) {
+      $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects["projects"][project]["images"][i]));
+    }
   }
 }
 
 var displayEducation = function() {
   for (var i = 0; i < education["schools"].length; i++) {
-    // var HTMLschoolStart = '<div class="education-entry"></div>';
     var school = education["schools"][i];
     $("#education").append(HTMLschoolStart);
-    // var HTMLschoolName = '<a href="#">%data%';
-    // var HTMLschoolDegree = ' -- %data%</a>';
     $(".education-entry:last").append(HTMLschoolName.replace("%data%", school["name"]) + HTMLschoolDegree.replace("%data%", school["degree"]));
-    // var HTMLschoolDates = '<div class="date-text">%data%</div>';
     $(".education-entry:last").append(HTMLschoolDates.replace("%data%", school["dates"]));
-    // var HTMLschoolLocation = '<div class="location-text">%data%</div>';
     $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", school["location"]));
-    // var HTMLschoolMajor = '<em><br>Major: %data%</em>';
-    $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", school["concentrations"].join(", ")));
+    $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", school["majors"].join(", ")));
   }
-  // var HTMLonlineClasses = '<h3>Online Classes</h3>';
   $(".education-entry:last").append(HTMLonlineClasses);
 
-  for (var j = 0; j < education["online"].length; j++) {
-    var online = education["online"][j];
-    // var HTMLonlineTitle = '<a href="#">%data%';
-    // var HTMLonlineSchool = ' - %data%</a>';
-    $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", online["title"]) + HTMLonlineSchool.replace("%data%", online["school"]));
-    // var HTMLonlineDates = '<div class="date-text">%data%</div>';
-    $(".education-entry:last").append(HTMLonlineDates.replace("%data%", online["dates"]));
-    // var HTMLonlineURL = '<br><a href="#">%data%</a>';
-    $(".education-entry:last").append(HTMLonlineURL.replace("%data%", online["url"]));
-  }
+  var online = education["onlineCourses"];
+  $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", online[0]) + HTMLonlineSchool.replace("%data%", online[1]));
+  $(".education-entry:last").append(HTMLonlineDates.replace("%data%", online[2]));
+  $(".education-entry:last").append(HTMLonlineURL.replace("%data%", online[3]));
 }
 
 displayWork();
@@ -233,13 +193,12 @@ $(document).click(function(loc) {
 var nameChange = function(oldName) {
   var finalName = "";
   var names = oldName.trim().split(" ");
-    for (var i = 0; i < (names.length - 1); i++) {
-      finalName = finalName + names[i] + " ";
-    }
+  for (var i = 0; i < (names.length - 1); i++) {
+    finalName = finalName + names[i] + " ";
+  }
   var lastName = names[names.length -1];
   lastName = lastName.toUpperCase();
   finalName = finalName + lastName;
-
   return finalName;
 }
 
@@ -248,14 +207,3 @@ $(document).click(function(loc) {
 });
 
 $("#mapDiv").append(googleMap);
-
-// console.log(nameChange(bio.name));
-
-// internationalise button
-// $("#main")
-//   .append("<input type='button' value='Internationalize Name'>")
-//   .click(function() {
-//     console.log(nameChange(bio.name));
-//     $("#name").replaceWith(HTMLheaderName.replace("%data%", nameChange(bio.name)));
-//   });
-
