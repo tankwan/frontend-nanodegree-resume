@@ -29,7 +29,7 @@ var education = {
     {
       "name": "The Wharton School, University of Pennsylvania",
       "degree": "Bachelor of Science in Economics",
-      "concentration": [
+      "concentrations": [
         "Real Estate",
         "Entrepreneurship",
         "Finance"
@@ -43,25 +43,25 @@ var education = {
       "title": "Startup Engineering",
       "school": "Coursera",
       "dates": "2012",
-      "URL": "coursera.com/startup"
+      "url": "coursera.com/startup"
     },
     {
       "title": "Analysis of Algorithms Part 1",
       "school": "Coursera",
       "dates": "2014",
-      "URL": "coursera.com/algo"
+      "url": "coursera.com/algo"
     },
     {
       "title": "Machine Learning",
       "school": "Coursera",
       "dates": "2014",
-      "URL": "coursera.com/machine"
+      "url": "coursera.com/machine"
     },
     {
       "title": "Front-end Nanodegree",
       "school": "Udacity",
       "dates": "January - June 2015",
-      "URL": "udacity.com/frontend"
+      "url": "udacity.com/frontend"
     }
   ]
 };
@@ -126,8 +126,8 @@ var projects = {
   }
 };
 
-$("#header").append(HTMLheaderName.replace("%data%", bio["name"]));
-$("#header").append(HTMLheaderRole.replace("%data%", bio["role"]));
+$("#header").prepend(HTMLheaderRole.replace("%data%", bio["role"]));
+$("#header").prepend(HTMLheaderName.replace("%data%", bio["name"]));
 
 if (bio["contacts"]) {
   var newContact = "";
@@ -137,6 +137,7 @@ if (bio["contacts"]) {
     newContact = newContact.replace("%data%", bio["contacts"][contact]);
     console.log(newContact);
     $("#topContacts").append(newContact);
+    $("#footerContacts").append(newContact);
   }
 }
 
@@ -186,15 +187,44 @@ var displayProjects = function() {
       $(this).css({"max-height": maxHeight });
       $(this).width("95%"); // Units are assumed to be pixels
       $(this).height("95%");
-      console.log($(this).width());
-      console.log($(this).src());
     });
     // $("img:last").css({max-height: maxWidth; });
   }
 }
 
+var displayEducation = function() {
+  for (var i = 0; i < education["schools"].length; i++) {
+    // var HTMLschoolStart = '<div class="education-entry"></div>';
+    var school = education["schools"][i];
+    $("#education").append(HTMLschoolStart);
+    // var HTMLschoolName = '<a href="#">%data%';
+    // var HTMLschoolDegree = ' -- %data%</a>';
+    $(".education-entry:last").append(HTMLschoolName.replace("%data%", school["name"]) + HTMLschoolDegree.replace("%data%", school["degree"]));
+    // var HTMLschoolDates = '<div class="date-text">%data%</div>';
+    $(".education-entry:last").append(HTMLschoolDates.replace("%data%", school["dates"]));
+    // var HTMLschoolLocation = '<div class="location-text">%data%</div>';
+    $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", school["location"]));
+    // var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+    $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", school["concentrations"].join(", ")));
+  }
+  // var HTMLonlineClasses = '<h3>Online Classes</h3>';
+  $(".education-entry:last").append(HTMLonlineClasses);
+
+  for (var j = 0; j < education["online"].length; j++) {
+    var online = education["online"][j];
+    // var HTMLonlineTitle = '<a href="#">%data%';
+    // var HTMLonlineSchool = ' - %data%</a>';
+    $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", online["title"]) + HTMLonlineSchool.replace("%data%", online["school"]));
+    // var HTMLonlineDates = '<div class="date-text">%data%</div>';
+    $(".education-entry:last").append(HTMLonlineDates.replace("%data%", online["dates"]));
+    // var HTMLonlineURL = '<br><a href="#">%data%</a>';
+    $(".education-entry:last").append(HTMLonlineURL.replace("%data%", online["url"]));
+  }
+}
+
 displayWork();
 displayProjects();
+displayEducation();
 
 $(document).click(function(loc) {
   logClicks(loc.clientX, loc.clientY);
@@ -216,6 +246,8 @@ var nameChange = function(oldName) {
 $(document).click(function(loc) {
   console.log(loc.pageX, loc.pageY);
 });
+
+$("#mapDiv").append(googleMap);
 
 // console.log(nameChange(bio.name));
 
