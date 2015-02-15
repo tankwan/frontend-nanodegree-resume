@@ -1,6 +1,6 @@
 var bio = { // bio contains:
   "name": "Tony K. Tan", // name : string
-  "role": "Self-taught Developer and Aspiring Product Manager", // role : string
+  "role": "Self-taught Developer", // role : string
   "contacts": { // contacts : an object with
     "mobile": "+(65) 96831445", //       mobile: string
     "email": "t@tonyktan.com", //       email: string
@@ -8,7 +8,7 @@ var bio = { // bio contains:
     "twitter": "@tonytankwan", //       twitter: string
     "location": "Singapore" //       location: string
   },
-  "welcomeMessage": "Welcome to my resume! Feel free to get in touch.", // welcomeMessage: string
+  "welcomeMessage": "Welcome to my resume!", // welcomeMessage: string
   "skills": [ // skills: array of strings
     "Ruby",
     "Python",
@@ -56,35 +56,35 @@ var work = { // work contains
       "title": "Senior Estate Manager (Policy Development)", //      title: string
       "location": "Singapore", //      location: string
       "dates": "April 2012 - Present", //      dates: string (works with a hyphen between them)
-      "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term."
+      "description": "With the housing market stabilized, moved to take on added work areas such as data analytics development."
     },
     {
       "employer": "Housing and Development Board of Singapore", //      employer: string
       "title": "Estate Officer (Policy Development)", //      title: string
       "location": "Singapore", //      location: string
       "dates": "July 2010 - April 2012", //      dates: string (works with a hyphen between them)
-      "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term." //      description: string
+      "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term. Worked on policy measures to help cool the housing market." //      description: string
     },
     {
       "employer": "Penn and Wharton Alumni Club of Singapore", //      employer: string
       "title": "Treasurer", //      title: string
       "location": "Singapore", //      location: string
       "dates": "May 2013 - May 2014", //      dates: string (works with a hyphen between them)
-      "description": "Maintained and reports accounts and authorizes expenses." //      description: string
+      "description": "Maintained club bank account and processed expense claims." //      description: string
     },
     {
       "employer": "Penn and Wharton Alumni Club of Singapore", //      employer: string
       "title": "Executive Committee Member", //      title: string
       "location": "Singapore", //      location: string
       "dates": "May 2012 - Present", //      dates: string (works with a hyphen between them)
-      "description": "Maintains and reports accounts and authorizes expenses." //      description: string
+      "description": "Organized events, working on publicity and ticket sales." //      description: string
     },
     {
       "employer": "Penn Alumni Interview Program (Singapore)", //      employer: string
       "title": "Co-Chair", //      title: string
       "location": "Singapore", //      location: string
       "dates": "July 2013 - Present", //      dates: string (works with a hyphen between them)
-      "description": "Developed and maintained web application to help organize interviews." //      description: string
+      "description": "Created web application to help organize interviews." //      description: string
     }
   ],
   "display": function() {}// display: function
@@ -95,21 +95,27 @@ var work = { // work contains
 var projects = { // projects contains:
   "projects": [ // projects: array of objects with
     {
-      "title": "Penn Alumni Interview Program (Singapore) Web Application", //       title: string
+      "title": "University Interviews Web Application (Web Application Creation)", //       title: string
       "dates": "Sep 2013 - Feb 2015", //       dates: string (works with a hyphen between them)
-      "description": "Web application built using Ruby Sinatra web framework to organize interviews", //       description: string
+      "description": "Web application built using Ruby Sinatra web framework to organize university interviews for the University of Pennsylvania. Conceptualized and coded up entire web application from scratch. Created functions for automated data entry, self-update of contact details, interview booking function, one-page information display, interview assignment collation, interview statistics monitoring, and interview assignment function.", //       description: string
       "images": [ //       images: array with string urls
-        "images/paip.png"
+        "images/paip1.png",
+        "images/paip2.png",
+        "images/paip3.png",
+        "images/paip4.png"
       ]//,
       // "location": "Singapore",
       // "URL": "http://penninterviewsg.herokuapp.com/demo"
     },
     {
-      "title": "rudepackets Project", //       title: string
+      "title": "rudepackets (Product Creation)", //       title: string
       "dates": "November 2014 - Ongoing", //       dates: string (works with a hyphen between them)
-      "description": "A series of cheeky red packets to revolutionize wedding gifting in Singapore", //       description: string
+      "description": "A series of cheeky red packets to revolutionize wedding gifting in Singapore. Developed product concept with a journalist and graphic designer. Responsibilites included refinement of product-market fit, plan of approach, sourcing of supplier, quality inspections, and delivery.", //       description: string
       "images": [ //       images: array with string urls
-        "images/rudepackets.jpg"
+        "images/rudepackets1.png",
+        "images/rudepackets2.png",
+        "images/rudepackets3.png",
+        "images/rudepackets4.png"
       ] //,
       // "location": "Singapore",
       // "url": "http://rudepackets.com"
@@ -174,36 +180,34 @@ var displayEducation = function() {
     $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", school["location"]));
     $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", school["majors"].join(", ")));
   }
-  $(".education-entry:last").append(HTMLonlineClasses);
 
+  $("#education").append(HTMLonlineClasses);
+  $("#education").append(HTMLschoolStart);
   var online = education["onlineCourses"];
   $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", online[0]) + HTMLonlineSchool.replace("%data%", online[1]));
   $(".education-entry:last").append(HTMLonlineDates.replace("%data%", online[2]));
   $(".education-entry:last").append(HTMLonlineURL.replace("%data%", online[3]));
 }
 
+var displayMap = function() {
+  $("#mapDiv").append(googleMap);
+}
+
 displayWork();
 displayProjects();
 displayEducation();
+displayMap();
 
-$(document).click(function(loc) {
-  logClicks(loc.clientX, loc.clientY);
-});
+// var nameChange = function(oldName) {
+//   var finalName = "";
+//   var names = oldName.trim().split(" ");
+//   for (var i = 0; i < (names.length - 1); i++) {
+//     finalName = finalName + names[i] + " ";
+//   }
+//   var lastName = names[names.length -1];
+//   lastName = lastName.toUpperCase();
+//   finalName = finalName + lastName;
+//   return finalName;
+// }
 
-var nameChange = function(oldName) {
-  var finalName = "";
-  var names = oldName.trim().split(" ");
-  for (var i = 0; i < (names.length - 1); i++) {
-    finalName = finalName + names[i] + " ";
-  }
-  var lastName = names[names.length -1];
-  lastName = lastName.toUpperCase();
-  finalName = finalName + lastName;
-  return finalName;
-}
 
-$(document).click(function(loc) {
-  console.log(loc.pageX, loc.pageY);
-});
-
-$("#mapDiv").append(googleMap);
