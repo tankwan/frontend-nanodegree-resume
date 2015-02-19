@@ -1,0 +1,16 @@
+{
+  "name": "bower install --save Polymer/polymer",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tankwan/frontend-nanodegree-resume",
+  "authors": [
+    "Tony Tan Kwan Tiong <tankwantiong@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

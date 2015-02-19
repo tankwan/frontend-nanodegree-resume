@@ -30,7 +30,7 @@ var education = { // education contains:
     {
       "name": "The Wharton School, University of Pennsylvania", //      name: string
       "location": "Philadelphia, PA, US", //      location: string
-      "degree": "Bachelor of Science in Economics", //      degree: string
+      "degree": "Bachelor of Science in Economics, Cum Laude", //      degree: string
       "majors": [ //      majors: array of strings
         "Real Estate",
         "Entrepreneurship",
@@ -56,35 +56,35 @@ var work = { // work contains
       "title": "Senior Estate Manager (Policy Development)", //      title: string
       "location": "Singapore", //      location: string
       "dates": "April 2012 - Present", //      dates: string (works with a hyphen between them)
-      "description": "With the housing market stabilized, moved to take on added work areas such as data analytics development."
+      "description": "Led a team of 3 data analysts to derive housing-related public policy insights using Tableau, R, Excel, and Microsoft Access, harnessing data of over 800,000 housing units and 2.5 million residents. Implemented data-driven public policy recommendation workflow, positively impacting over 3 million Singapore residents."
     },
     {
       "employer": "Housing and Development Board of Singapore", //      employer: string
       "title": "Estate Officer (Policy Development)", //      title: string
       "location": "Singapore", //      location: string
       "dates": "July 2010 - April 2012", //      dates: string (works with a hyphen between them)
-      "description": "Policy drafting, develops strategic options for Singapore's housing policies in the mid to long-term. Worked on policy measures to help cool the housing market." //      description: string
-    },
-    {
-      "employer": "Penn and Wharton Alumni Club of Singapore", //      employer: string
-      "title": "Treasurer", //      title: string
-      "location": "Singapore", //      location: string
-      "dates": "May 2013 - May 2014", //      dates: string (works with a hyphen between them)
-      "description": "Maintained club bank account and processed expense claims." //      description: string
-    },
-    {
-      "employer": "Penn and Wharton Alumni Club of Singapore", //      employer: string
-      "title": "Executive Committee Member", //      title: string
-      "location": "Singapore", //      location: string
-      "dates": "May 2012 - Present", //      dates: string (works with a hyphen between them)
-      "description": "Organized events, working on publicity and ticket sales." //      description: string
+      "description": "Developed housing-related public policy frameworks and strategies, impacting the housing provision of over 3 million residents in Singapore. Conducted data-driven assessment analysis using Excel to evaluate public policy options impacting over the housing eligibility and liquidity of over 3 million Singapore residents." //      description: string
     },
     {
       "employer": "Penn Alumni Interview Program (Singapore)", //      employer: string
       "title": "Co-Chair", //      title: string
       "location": "Singapore", //      location: string
       "dates": "July 2013 - Present", //      dates: string (works with a hyphen between them)
-      "description": "Created web application to help organize interviews." //      description: string
+      "description": "Created mobile-responsive scheduling web application using Ruby Sinatra framework to match over 80 alumni interviewers with over 250 undergraduate applicants annually. Refined features of web application to include functionalities like auto-scheduling, self-service booking, and interview assignment listing, doing away with the administrative work of manually scheduling over 250 alumni interviews. Received special mention from University of Pennsylvania Director of Penn Alumni Interview Program Patrick Bredehoft regarding the functionality of the application." //      description: string
+    },
+    {
+      "employer": "Penn and Wharton Alumni Club of Singapore", //      employer: string
+      "title": "Treasurer", //      title: string
+      "location": "Singapore", //      location: string
+      "dates": "May 2013 - May 2014", //      dates: string (works with a hyphen between them)
+      "description": "Managed club funds of over US$10,000 for alumni club of over 800 members. Authorized spending for club events including hosting of faculty, business leaders, and distinguished alumni, serving over 300 attending alumni." //      description: string
+    },
+    {
+      "employer": "Penn and Wharton Alumni Club of Singapore", //      employer: string
+      "title": "Executive Committee Member", //      title: string
+      "location": "Singapore", //      location: string
+      "dates": "May 2012 - Present", //      dates: string (works with a hyphen between them)
+      "description": "Organized club events including social drinks and faculty speaker talks, attended by over 200 alumni annually, fostering the wider alumni community in Singapore. Implemented an online ticketing solution for club events, expanding reach of events to over 800 alumni in Singapore." //      description: string
     }
   ],
   "display": function() {}// display: function
@@ -110,7 +110,7 @@ var projects = { // projects contains:
     {
       "title": "rudepackets (Product Creation)", //       title: string
       "dates": "November 2014 - Ongoing", //       dates: string (works with a hyphen between them)
-      "description": "A series of cheeky red packets to revolutionize wedding gifting in Singapore. Developed product concept with a journalist and graphic designer. Responsibilites included refinement of product-market fit, plan of approach, sourcing of supplier, quality inspections, and delivery.", //       description: string
+      "description": "A series of cheeky red packets to revolutionize wedding gifting in Singapore. Developed product concept with a journalist and graphic designer. Responsibilities included refinement of product-market fit, plan of approach, sourcing of supplier, quality inspections, and delivery. Achieved over US$1,000 in sales and featured by major national newspapers.", //       description: string
       "images": [ //       images: array with string urls
         "images/rudepackets1.png",
         "images/rudepackets2.png",
