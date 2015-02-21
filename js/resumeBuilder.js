@@ -1,3 +1,4 @@
+// data on bio
 var bio = { // bio contains:
   "name": "Tony K. Tan", // name : string
   "role": "Self-taught Developer", // role : string
@@ -25,6 +26,7 @@ var bio = { // bio contains:
   "display": function() {} // display: function
 }
 
+// data on education
 var education = { // education contains:
   "schools": [ // schools: array of objects with
     {
@@ -49,6 +51,7 @@ var education = { // education contains:
   "display": function() {} // display: function
 };
 
+// data on work
 var work = { // work contains
   "jobs": [ // jobs: array of objects with
     {
@@ -90,8 +93,7 @@ var work = { // work contains
   "display": function() {}// display: function
 };
 
-// display: function
-
+// data on projects
 var projects = { // projects contains:
   "projects": [ // projects: array of objects with
     {
@@ -104,8 +106,6 @@ var projects = { // projects contains:
         "images/paip3.png",
         "images/paip4.png"
       ]//,
-      // "location": "Singapore",
-      // "URL": "http://penninterviewsg.herokuapp.com/demo"
     },
     {
       "title": "rudepackets (Product Creation)", //       title: string
@@ -117,37 +117,76 @@ var projects = { // projects contains:
         "images/rudepackets3.png",
         "images/rudepackets4.png"
       ] //,
-      // "location": "Singapore",
-      // "url": "http://rudepackets.com"
     }
   ],
   "display": function() {}// display: function
 };
 
-$("#header").prepend(HTMLheaderRole.replace("%data%", bio["role"]));
-$("#header").prepend(HTMLheaderName.replace("%data%", bio["name"]));
+var displayHead = function(){
+  $("#header").prepend(HTMLheaderRole.replace("%data%", bio["role"]));
+  $("#header").prepend(HTMLheaderName.replace("%data%", bio["name"]));
 
-if (bio["contacts"]) {
-  var newContact = "";
-  console.log("hello");
-  for (var contact in bio["contacts"]) {
-    newContact = HTMLcontactGeneric.replace("%contact%", contact);
-    newContact = newContact.replace("%data%", bio["contacts"][contact]);
-    console.log(newContact);
-    $("#topContacts").append(newContact);
-    $("#footerContacts").append(newContact);
+  if (bio["contacts"]) {
+    var newContact = "";
+    console.log("hello");
+    for (var contact in bio["contacts"]) {
+      newContact = HTMLcontactGeneric.replace("%contact%", contact);
+      newContact = newContact.replace("%data%", bio["contacts"][contact]);
+      $("#topContacts").append(newContact);
+      $("#footerContacts").append(newContact);
+    }
+  }
+
+  $("#header").append(HTMLbioPic.replace("%data%", bio["bioPic"]));
+  $("#header").append(HTMLWelcomeMsg.replace("%data%", bio["welcomeMessage"]));
+
+  if (bio["skills"].length > 0) {
+    $("#header").append(HTMLskillsStart);
+    for (i = 0; i < bio["skills"].length; i++) {
+      $("#skills").append(HTMLskills.replace("%data%", bio["skills"][i]));
+    }
   }
 }
 
-$("#header").append(HTMLbioPic.replace("%data%", bio["bioPic"]));
-$("#header").append(HTMLWelcomeMsg.replace("%data%", bio["welcomeMessage"]));
+$("#projectsHead").click(function(){
+  $(".currHead").removeAttr("class", "currHead");
+  $("#projectsHead").attr("class", "currHead");
+  $("#projects").fadeIn();
+  $("#education").hide();
+  $("#workExperience").hide();
+  $("#mapDiv").hide();
+});
 
-if (bio["skills"].length > 0) {
-  $("#header").append(HTMLskillsStart);
-  for (i = 0; i < bio["skills"].length; i++) {
-    $("#skills").append(HTMLskills.replace("%data%", bio["skills"][i]));
-  }
-}
+$("#eduHead").click(function(){
+  $(".currHead").removeAttr("class", "currHead");
+  $("#eduHead").attr("class", "currHead");
+  $("#projects").hide();
+  $("#education").fadeIn();
+  $("#workExperience").hide();
+  $("#mapDiv").hide();
+});
+
+$("#workHead").click(function(){
+  $(".currHead").removeAttr("class", "currHead");
+  $("#workHead").attr("class", "currHead");
+  $("#projects").hide();
+  $("#education").hide();
+  $("#workExperience").fadeIn();
+  $("#mapDiv").hide();
+});
+
+$("#mapHead").click(function(){
+  $(".currHead").removeAttr("class", "currHead");
+  $("#mapHead").attr("class", "currHead");
+  $("#projects").hide();
+  $("#education").hide();
+  $("#workExperience").hide();
+  $("#mapDiv").fadeIn();
+  // hack to fix google map quirk
+  // http://stackoverflow.com/questions/8803323/map-sometimes-appears-only-on-upper-left-corner-of-its-div
+  google.maps.event.trigger(map, 'resize');
+  map.fitBounds(mapBounds);
+});
 
 var displayWork = function() {
   for (i = 0; i < work["jobs"].length; i++) {
@@ -172,6 +211,7 @@ var displayProjects = function() {
 }
 
 var displayEducation = function() {
+  $("#education").append(HTMLcollege);
   for (var i = 0; i < education["schools"].length; i++) {
     var school = education["schools"][i];
     $("#education").append(HTMLschoolStart);
@@ -193,21 +233,15 @@ var displayMap = function() {
   $("#mapDiv").append(googleMap);
 }
 
+displayHead();
 displayWork();
 displayProjects();
 displayEducation();
 displayMap();
 
-// var nameChange = function(oldName) {
-//   var finalName = "";
-//   var names = oldName.trim().split(" ");
-//   for (var i = 0; i < (names.length - 1); i++) {
-//     finalName = finalName + names[i] + " ";
-//   }
-//   var lastName = names[names.length -1];
-//   lastName = lastName.toUpperCase();
-//   finalName = finalName + lastName;
-//   return finalName;
-// }
-
-
+$(document).ready(function() {
+  $("#projectsHead").attr("class", "currHead");
+  $("#education").hide();
+  $("#workExperience").hide();
+  $("#mapDiv").hide();
+});

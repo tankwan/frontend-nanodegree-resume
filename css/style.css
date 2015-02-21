@@ -23,10 +23,16 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #596BFF;
+  color: #a5aefa;
   line-height: 29px;
   padding: 10px;
+  cursor: pointer; cursor: hand; /* make h2 look like link */
+  transition: color 0.5s ease;
 }
+
+h2:hover { color: #596bff; }
+
+.currHead { color: #596bff; }
 
 h3 {
   font-style: italic;

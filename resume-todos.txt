@@ -1,7 +1,0 @@
-edit content of resume
-recolour resume
-size project pictures to 6 boxes, adjusting to size
-limit map max zoom out
-make left US and right Singapore
-put online
-link to tonyktan.com
