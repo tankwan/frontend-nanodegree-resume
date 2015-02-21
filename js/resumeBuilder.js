@@ -23,7 +23,34 @@ var bio = { // bio contains:
     "R"
   ],
   "bioPic": "images/tonyktan.jpeg", // biopic: url
-  "display": function() {} // display: function
+  "display": function() {
+    var displayHead = function(){
+      $("#header").prepend(HTMLheaderRole.replace("%data%", bio["role"]));
+      $("#header").prepend(HTMLheaderName.replace("%data%", bio["name"]));
+
+      if (bio["contacts"]) {
+        var newContact = "";
+        console.log("hello");
+        for (var contact in bio["contacts"]) {
+          newContact = HTMLcontactGeneric.replace("%contact%", contact);
+          newContact = newContact.replace("%data%", bio["contacts"][contact]);
+          $("#topContacts").append(newContact);
+          $("#footerContacts").append(newContact);
+        }
+      }
+
+      $("#header").append(HTMLbioPic.replace("%data%", bio["bioPic"]));
+      $("#header").append(HTMLWelcomeMsg.replace("%data%", bio["welcomeMessage"]));
+
+      if (bio["skills"].length > 0) {
+        $("#header").append(HTMLskillsStart);
+        for (i = 0; i < bio["skills"].length; i++) {
+          $("#skills").append(HTMLskills.replace("%data%", bio["skills"][i]));
+        }
+      }
+    }
+    displayHead();
+  } // display: function
 }
 
 // data on education
@@ -48,7 +75,27 @@ var education = { // education contains:
     2014, //      date: integer (date finished)
     "https://www.coursera.com" //      url: string
   ],
-  "display": function() {} // display: function
+  "display": function() {
+    var displayEducation = function() {
+      $("#education").append(HTMLcollege);
+      for (var i = 0; i < education["schools"].length; i++) {
+        var school = education["schools"][i];
+        $("#education").append(HTMLschoolStart);
+        $(".education-entry:last").append(HTMLschoolName.replace("%data%", school["name"]) + HTMLschoolDegree.replace("%data%", school["degree"]));
+        $(".education-entry:last").append(HTMLschoolDates.replace("%data%", school["dates"]));
+        $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", school["location"]));
+        $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", school["majors"].join(", ")));
+      }
+
+      $("#education").append(HTMLonlineClasses);
+      $("#education").append(HTMLschoolStart);
+      var online = education["onlineCourses"];
+      $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", online[0]) + HTMLonlineSchool.replace("%data%", online[1]));
+      $(".education-entry:last").append(HTMLonlineDates.replace("%data%", online[2]));
+      $(".education-entry:last").append(HTMLonlineURL.replace("%data%", online[3]));
+    }
+    displayEducation();
+  } // display: function
 };
 
 // data on work
@@ -90,7 +137,18 @@ var work = { // work contains
       "description": "Organized club events including social drinks and faculty speaker talks, attended by over 200 alumni annually, fostering the wider alumni community in Singapore. Implemented an online ticketing solution for club events, expanding reach of events to over 800 alumni in Singapore." //      description: string
     }
   ],
-  "display": function() {}// display: function
+  "display": function() {
+    var displayWork = function() {
+      for (i = 0; i < work["jobs"].length; i++) {
+        $("#workExperience").append(HTMLworkStart);
+        $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work["jobs"][i]["employer"]) + HTMLworkTitle.replace("%data%", work["jobs"][i]["title"]));
+        $(".work-entry:last").append(HTMLworkDates.replace("%data%", work["jobs"][i]["dates"]));
+        $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work["jobs"][i]["location"]));
+        $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work["jobs"][i]["description"]));
+      }
+    }
+    displayWork();
+  }// display: function
 };
 
 // data on projects
@@ -119,84 +177,30 @@ var projects = { // projects contains:
       ] //,
     }
   ],
-  "display": function() {}// display: function
+  "display": function() {
+    var displayProjects = function() {
+      for (project in projects["projects"]) {
+        $("#projects").append(HTMLprojectStart);
+        $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects["projects"][project]["title"]));
+        $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects["projects"][project]["dates"]));
+        $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects["projects"][project]["description"]));
+        for (i = 0; i < projects["projects"][project]["images"].length; i++) {
+          $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects["projects"][project]["images"][i]));
+        }
+      }
+    }
+    displayProjects();
+  }// display: function
 };
 
-var displayHead = function(){
-  $("#header").prepend(HTMLheaderRole.replace("%data%", bio["role"]));
-  $("#header").prepend(HTMLheaderName.replace("%data%", bio["name"]));
-
-  if (bio["contacts"]) {
-    var newContact = "";
-    console.log("hello");
-    for (var contact in bio["contacts"]) {
-      newContact = HTMLcontactGeneric.replace("%contact%", contact);
-      newContact = newContact.replace("%data%", bio["contacts"][contact]);
-      $("#topContacts").append(newContact);
-      $("#footerContacts").append(newContact);
-    }
-  }
-
-  $("#header").append(HTMLbioPic.replace("%data%", bio["bioPic"]));
-  $("#header").append(HTMLWelcomeMsg.replace("%data%", bio["welcomeMessage"]));
-
-  if (bio["skills"].length > 0) {
-    $("#header").append(HTMLskillsStart);
-    for (i = 0; i < bio["skills"].length; i++) {
-      $("#skills").append(HTMLskills.replace("%data%", bio["skills"][i]));
-    }
-  }
-}
-
-var displayWork = function() {
-  for (i = 0; i < work["jobs"].length; i++) {
-    $("#workExperience").append(HTMLworkStart);
-    $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work["jobs"][i]["employer"]) + HTMLworkTitle.replace("%data%", work["jobs"][i]["title"]));
-    $(".work-entry:last").append(HTMLworkDates.replace("%data%", work["jobs"][i]["dates"]));
-    $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work["jobs"][i]["location"]));
-    $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work["jobs"][i]["description"]));
-  }
-}
-
-var displayProjects = function() {
-  for (project in projects["projects"]) {
-    $("#projects").append(HTMLprojectStart);
-    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects["projects"][project]["title"]));
-    $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects["projects"][project]["dates"]));
-    $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects["projects"][project]["description"]));
-    for (i = 0; i < projects["projects"][project]["images"].length; i++) {
-      $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects["projects"][project]["images"][i]));
-    }
-  }
-}
-
-var displayEducation = function() {
-  $("#education").append(HTMLcollege);
-  for (var i = 0; i < education["schools"].length; i++) {
-    var school = education["schools"][i];
-    $("#education").append(HTMLschoolStart);
-    $(".education-entry:last").append(HTMLschoolName.replace("%data%", school["name"]) + HTMLschoolDegree.replace("%data%", school["degree"]));
-    $(".education-entry:last").append(HTMLschoolDates.replace("%data%", school["dates"]));
-    $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", school["location"]));
-    $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", school["majors"].join(", ")));
-  }
-
-  $("#education").append(HTMLonlineClasses);
-  $("#education").append(HTMLschoolStart);
-  var online = education["onlineCourses"];
-  $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", online[0]) + HTMLonlineSchool.replace("%data%", online[1]));
-  $(".education-entry:last").append(HTMLonlineDates.replace("%data%", online[2]));
-  $(".education-entry:last").append(HTMLonlineURL.replace("%data%", online[3]));
-}
+bio["display"]();
+education["display"]();
+work["display"]();
+projects["display"]();
 
 var displayMap = function() {
   $("#mapDiv").append(googleMap);
 }
-
-displayHead();
-displayWork();
-displayProjects();
-displayEducation();
 displayMap();
 
 $(document).ready(function() {
