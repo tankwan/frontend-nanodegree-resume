@@ -48,10 +48,10 @@ var bio = { // bio contains:
           $("#skills").append(HTMLskills.replace("%data%", bio["skills"][i]));
         }
       }
-    }
+    };
     displayHead();
   } // display: function
-}
+};
 
 // data on education
 var education = { // education contains:
@@ -93,7 +93,7 @@ var education = { // education contains:
       $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", online[0]) + HTMLonlineSchool.replace("%data%", online[1]));
       $(".education-entry:last").append(HTMLonlineDates.replace("%data%", online[2]));
       $(".education-entry:last").append(HTMLonlineURL.replace("%data%", online[3]));
-    }
+    };
     displayEducation();
   } // display: function
 };
@@ -146,7 +146,7 @@ var work = { // work contains
         $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work["jobs"][i]["location"]));
         $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work["jobs"][i]["description"]));
       }
-    }
+    };
     displayWork();
   }// display: function
 };
@@ -188,19 +188,19 @@ var projects = { // projects contains:
           $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects["projects"][project]["images"][i]));
         }
       }
-    }
+    };
     displayProjects();
   }// display: function
 };
 
-bio["display"]();
-education["display"]();
-work["display"]();
-projects["display"]();
+bio.display();
+education.display();
+work.display();
+projects.display();
 
 var displayMap = function() {
   $("#mapDiv").append(googleMap);
-}
+};
 displayMap();
 
 $(document).ready(function() {

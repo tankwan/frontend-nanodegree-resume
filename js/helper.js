@@ -262,7 +262,7 @@ var showProjects = function() {
   $("#education").hide();
   $("#workExperience").hide();
   $("#mapDiv").hide();
-}
+};
 
 var showEdu = function() {
   $(".currHead").removeAttr("class", "currHead");
@@ -271,7 +271,7 @@ var showEdu = function() {
   $("#education").fadeIn();
   $("#workExperience").hide();
   $("#mapDiv").hide();
-}
+};
 
 var showWork = function() {
   $(".currHead").removeAttr("class", "currHead");
@@ -280,7 +280,7 @@ var showWork = function() {
   $("#education").hide();
   $("#workExperience").fadeIn();
   $("#mapDiv").hide();
-}
+};
 
 var showMap = function() {
   $(".currHead").removeAttr("class", "currHead");
@@ -293,4 +293,4 @@ var showMap = function() {
   // http://stackoverflow.com/questions/8803323/map-sometimes-appears-only-on-upper-left-corner-of-its-div
   google.maps.event.trigger(map, 'resize');
   map.fitBounds(mapBounds);
-}
+};
