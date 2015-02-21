@@ -247,3 +247,50 @@ window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
   map.fitBounds(mapBounds);
 });
+
+/*
+Udacious Requirement: Additional Interactivity
+
+This section uses jQuery to create a menu for the respective content segments, instead of
+showing everything in one view.
+*/
+
+var showProjects = function() {
+  $(".currHead").removeAttr("class", "currHead");
+  $("#projectsHead").attr("class", "currHead");
+  $("#projects").fadeIn();
+  $("#education").hide();
+  $("#workExperience").hide();
+  $("#mapDiv").hide();
+}
+
+var showEdu = function() {
+  $(".currHead").removeAttr("class", "currHead");
+  $("#eduHead").attr("class", "currHead");
+  $("#projects").hide();
+  $("#education").fadeIn();
+  $("#workExperience").hide();
+  $("#mapDiv").hide();
+}
+
+var showWork = function() {
+  $(".currHead").removeAttr("class", "currHead");
+  $("#workHead").attr("class", "currHead");
+  $("#projects").hide();
+  $("#education").hide();
+  $("#workExperience").fadeIn();
+  $("#mapDiv").hide();
+}
+
+var showMap = function() {
+  $(".currHead").removeAttr("class", "currHead");
+  $("#mapHead").attr("class", "currHead");
+  $("#projects").hide();
+  $("#education").hide();
+  $("#workExperience").hide();
+  $("#mapDiv").fadeIn();
+  // hack to fix google map quirk
+  // http://stackoverflow.com/questions/8803323/map-sometimes-appears-only-on-upper-left-corner-of-its-div
+  google.maps.event.trigger(map, 'resize');
+  map.fitBounds(mapBounds);
+}

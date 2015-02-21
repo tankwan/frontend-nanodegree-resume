@@ -23,12 +23,17 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
+  /* Udacious Requirement: Artistic Creativity */
+  /* Change of color to fit personality */
   color: #a5aefa;
   line-height: 29px;
   padding: 10px;
   cursor: pointer; cursor: hand; /* make h2 look like link */
   transition: color 0.5s ease;
 }
+
+/* Udacious Requirement: Additional Interactivity */
+/* Interactive Menu Setup */
 
 h2:hover { color: #596bff; }
 
@@ -98,6 +103,8 @@ a {
   display: none;
 }
 
+/* Udacious Requirement: Artistic Creativity */
+/* Change of color to fit personality */
 .orange {
   background-color: #464B7F;
 }
@@ -122,8 +129,8 @@ a {
 }
 
 /* TODO: Replace with image later */
+/* Note: Tried image, prefer solid color background */
 #header {
-  /*background-image: url('../images/sf_financial.jpg');*/
   background-color: #464B7F;
 }
 

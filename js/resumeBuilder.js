@@ -1,7 +1,7 @@
 // data on bio
 var bio = { // bio contains:
   "name": "Tony K. Tan", // name : string
-  "role": "Self-taught Developer", // role : string
+  "role": "Problem Solver", // role : string
   "contacts": { // contacts : an object with
     "mobile": "+(65) 96831445", //       mobile: string
     "email": "t@tonyktan.com", //       email: string
@@ -148,46 +148,6 @@ var displayHead = function(){
   }
 }
 
-$("#projectsHead").click(function(){
-  $(".currHead").removeAttr("class", "currHead");
-  $("#projectsHead").attr("class", "currHead");
-  $("#projects").fadeIn();
-  $("#education").hide();
-  $("#workExperience").hide();
-  $("#mapDiv").hide();
-});
-
-$("#eduHead").click(function(){
-  $(".currHead").removeAttr("class", "currHead");
-  $("#eduHead").attr("class", "currHead");
-  $("#projects").hide();
-  $("#education").fadeIn();
-  $("#workExperience").hide();
-  $("#mapDiv").hide();
-});
-
-$("#workHead").click(function(){
-  $(".currHead").removeAttr("class", "currHead");
-  $("#workHead").attr("class", "currHead");
-  $("#projects").hide();
-  $("#education").hide();
-  $("#workExperience").fadeIn();
-  $("#mapDiv").hide();
-});
-
-$("#mapHead").click(function(){
-  $(".currHead").removeAttr("class", "currHead");
-  $("#mapHead").attr("class", "currHead");
-  $("#projects").hide();
-  $("#education").hide();
-  $("#workExperience").hide();
-  $("#mapDiv").fadeIn();
-  // hack to fix google map quirk
-  // http://stackoverflow.com/questions/8803323/map-sometimes-appears-only-on-upper-left-corner-of-its-div
-  google.maps.event.trigger(map, 'resize');
-  map.fitBounds(mapBounds);
-});
-
 var displayWork = function() {
   for (i = 0; i < work["jobs"].length; i++) {
     $("#workExperience").append(HTMLworkStart);
@@ -240,8 +200,27 @@ displayEducation();
 displayMap();
 
 $(document).ready(function() {
-  $("#projectsHead").attr("class", "currHead");
-  $("#education").hide();
-  $("#workExperience").hide();
-  $("#mapDiv").hide();
+  // Udacious Requirement: Additional Interactivity
+  // Interactive Menu Setup
+
+  showProjects();
+  // shows projects when "Projects" header is clicked
+  $("#projectsHead").click(function(){
+    showProjects();
+  });
+
+  // shows education when "Education" header is clicked
+  $("#eduHead").click(function(){
+    showEdu();
+  });
+
+  // shows work when "Work" header is clicked on
+  $("#workHead").click(function(){
+    showWork();
+  });
+
+  // shows maps when "Map" header is clicked on
+  $("#mapHead").click(function(){
+    showMap();
+  });
 });
