@@ -135,8 +135,13 @@ a {
 }
 
 .flex-box {
+  display: -webkit-box; /* Safari */
+  display: -moz-box; /* Firefox 21- */
+  display: -ms-flexbox; /* IE 10+ */
   display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: row; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari */
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
