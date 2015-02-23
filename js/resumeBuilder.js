@@ -30,7 +30,6 @@ var bio = { // bio contains:
 
       if (bio["contacts"]) {
         var newContact = "";
-        console.log("hello");
         for (var contact in bio["contacts"]) {
           newContact = HTMLcontactGeneric.replace("%contact%", contact);
           newContact = newContact.replace("%data%", bio["contacts"][contact]);
